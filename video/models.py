@@ -8,7 +8,7 @@ class Video(models.Model):
     description = models.TextField(null=True, blank=True)
     upload_date = models.DateTimeField(auto_now_add=True)
     type = models.CharField(max_length=50, null=True, blank=True)
-    channel_id = models.OneToOneField(Channel, on_delete=models.CASCADE)
+    channel_id = models.ForeignKey(Channel, on_delete=models.CASCADE)
 
 
     def __str__(self) -> str:
