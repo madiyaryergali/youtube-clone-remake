@@ -27,6 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['techtube.azurewebsites.net', 'https://techtube.azurewebsites.net', 'localhost']
 
+CSRF_TRUSTED_ORIGINS = ['https://techtube.azurewebsites.net']
 
 # Application definition
 
