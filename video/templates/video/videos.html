@@ -1,39 +1,32 @@
 {% extends 'base.html' %}
 
-{% block title%}Videos{% endblock %}
+{% block title %}Videos{% endblock %}
 
-{% block content%}
+{% block content %}
     <div class="pb-6 grid grid-cols-4 gap-4 bg-gray-100 rounded-xl">
-        <div class="col-span-1">
-            
+        <div class="col-span-1 p-4 bg-white rounded-xl">
             <hr class="my-6">
-            
 
-    
-            <ul>
-                <li><a href="#" class="mt-2 px-8 py-4 inline-block bg-yellow-500 text-lg text-white rounded-xl hover:bg-yellow-700">Clear</a></li>
+            <ul class="space-y-2">
+                <li><a href="#" class="block px-8 py-4 bg-yellow-500 text-lg text-white rounded-xl hover:bg-yellow-700">Clear</a></li>
             </ul>
         </div>
-    <div class="col-span-3">
-        <div class="mt-6 px-6 py-3 bg-gray-100 rounded-xl">
-                <div class="grid grid-cols-3 gap-3">
-                    {% for video in videos %}
-                        <div>
-                            <a href="#">
-                                <div class="rounded-xl p-6 bg-white hover:scale-110 ease-in duration-200">
-                                    <video width="320" height="240" controls>
-                                        <source src="{{ video.video.url }}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                      </video>
-                                
-                                    <h2 class="text-2xl">{{ video.name }}</h2>
-                                </div>
-                            </a>
+        <div class="col-span-3 p-6 bg-gray-100 rounded-xl">
+            <div class="grid grid-cols-3 gap-6">
+                {% for video in videos %}
+                    <div class="relative rounded-xl overflow-hidden bg-white shadow-md transform hover:scale-105 duration-300">
+                        <a href="#">
+                            <video width="320" height="240" controls class="w-full">
+                                <source src="{{ video.video.url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </a>
+                        <div class="p-4">
+                            <h2 class="text-lg font-semibold text-gray-800">{{ video.name }}</h2>
                         </div>
-                    {% endfor %}
-                </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-    
 {% endblock %}
