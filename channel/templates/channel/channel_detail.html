@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="text-lg font-semibold">{{ channel.name }} Channel</h2>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {% for video in videos %}
+            <div class="bg-white shadow-md rounded-md overflow-hidden">
+                <div class="relative">
+                    <video controls class="w-full">
+                        <source src="{{ video.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold"><a href="{% url 'video:video_detail' video.pk %}">{{ video.name }}</a></h2>
+                    <p class="text-sm text-gray-600">{{ video.channel_id.name }}</p>
+                    <p class="text-sm text-gray-500">{{ video.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
